@@ -228,7 +228,6 @@ class BinarySearchTree {
 }
 
 function treeTest(){
-
   let BST = new BinarySearchTree();
   BST.insert(35, null);
   BST.insert(25, null);
@@ -249,26 +248,43 @@ treeTest();
 
 function inOrder(tree) {
   if (tree.left) 
-    inOrder(tree.left)
+    inOrder(tree.left);
   
-  console.log(tree.key);
+  console.log(tree.value);
   if (tree.right) 
-    inOrder(tree.right)
+    inOrder(tree.right);
 }
 
 function preOrder(tree) {
-  console.log(tree.key);
+  console.log(tree.value);
   if (tree.left) 
-    preOrder(tree.left)
+    preOrder(tree.left);
   if (tree.right) 
-    preOrder(tree.right)
+    preOrder(tree.right);
 }
 
 function postOrder(tree) {
   if (tree.left)
-    postOrder(tree.left)
+    postOrder(tree.left);
   if (tree.right){ 
-    postOrder(tree.right)
+    postOrder(tree.right);
   }
-  console.log(tree.key);
+  console.log(tree.value);
 }
+
+
+function OrgChart(){
+    let orgChart = new BinarySearchTree();
+    orgChart.insert(5,'Captain Picard');
+    orgChart.insert(3,'Commander Riker');
+    orgChart.insert(2,'Lt. Cmdr. Worf');
+    orgChart.insert(4,'Lt. Cmdr. LaForge');
+    orgChart.insert(6,'Commander Data');
+    orgChart.insert(1,'Lieutenant Security');
+    orgChart.insert(8,'Lt. Cmd. Crusher');
+    orgChart.insert(7,'Lieutenant Selar');
+    console.log(preOrder(orgChart));
+}
+
+
+OrgChart();
