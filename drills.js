@@ -64,10 +64,10 @@ function bookSearch(array, title, value, start = 0, end = array.length -1) {
   else if (dewey > value) {
     return bookSearch(array, title ,value, start, index - 1);
   }
-};
+}
 
 
-console.log(bookSearch(library, 'Teach Yourself C++ In 21 Days', '005.133'));
+//console.log(bookSearch(library, 'Teach Yourself C++ In 21 Days', '005.133'));
 
 //Drill04
 /** 
@@ -243,7 +243,7 @@ function treeTest(){
   return postOrder(BST);
 }
 
-treeTest();
+//treeTest();
 
 
 function inOrder(tree) {
@@ -287,4 +287,18 @@ function OrgChart(){
 }
 
 
-OrgChart();
+//OrgChart();
+let array = [128, 97, 121, 123, 98, 97, 105];
+
+
+function maxProfit(arr) { 
+    let max = 0;
+    let result = 0;
+    for (let i = 0; i < arr.length; i++){
+        if(arr[i+1] - arr[i] > max)
+            max = arr[i+1] - arr[i];
+        } 
+    return max;
+}
+
+console.log(maxProfit(array));
