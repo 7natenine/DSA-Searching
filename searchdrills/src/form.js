@@ -12,32 +12,34 @@ export class form extends Component {
             }
         }
     }
-
+    failedAttempts = null;
     lookForNumberBinary = (data, num, start = 0, end = data.length -1, tries) => {
         if(start > end){
-            console.log('ive reached the end', tries)
+            this.failedAttempts = tries;
             return -1;
         }
         let index = Math.floor((start + end) / 2);
         let item = data[index];
+        tries = tries || 0;
 
         if(item === num){
             return index;
         } else if( item < num){
-            tries++
-            return this.lookForNumberBinary(data, num, index +1, end, tries)
+            return this.lookForNumberBinary(data, num, index +1, end, tries + 1)
         } else if( item > num) {
-            tries++
-            return this.lookForNumberBinary(data, num, start, index -1, tries);
+            return this.lookForNumberBinary(data, num, start, index -1, tries + 1);
         }
-        //return tries;
+        return tries;
     }
 
     handleSubmit = ev => {
         ev.preventDefault();
         let input = parseInt(ev.target.input.value);
-
-        alert(this.lookForNumberBinary(dataSet, input));
+        if(this.lookForNumberBinary(dataSet, input) < 0){
+            alert('i was unable to find the number and i looked ' + this.failedAttempts + ' times')
+        } else {
+            alert(this.lookForNumberBinary(dataSet, input));
+        }
     };
 
     render() {
